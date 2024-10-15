@@ -33,7 +33,6 @@ double global_rotation_x = 0.0f;
 double global_rotation_y = 0.0f;
 
 float global_light_pos[] = {-10.0, 0.0, -5.0};
-//float global_light_pos[] = {0.0, 4.0, 0.0};
 static float LIGHT_MOVE_OFFSET = 1.0f;
 
 static GLuint global_gpu_program;
@@ -44,21 +43,6 @@ Mesh * global_mesh = NULL;
 
 void init() {
     global_mesh = load_obj("../models/sphere.obj");
-    //global_mesh = load_obj("../models/sphere.obj");
-    //global_mesh = load_obj("../models/rectangle.obj");
-
-    // printf("\nVertices [%d]\n", global_mesh->vertices.size());
-    // for (uint i=0; i<global_mesh->vertices.size(); i++) {
-    //     Vertex & v = global_mesh->vertices[i];
-    //     printf("v %f %f %f\n", v.pos[0], v.pos[1], v.pos[2]);
-    //     printf("n %f %f %f\n", v.normal[0], v.normal[1], v.normal[2]);
-    //     printf("uv %f %f\n\n", v.uv[0], v.uv[1]);
-    // }
-    
-    // printf("\nFaces [%d]\n", global_mesh->faces.size());
-    // for (uint i=0; i<global_mesh->faces.size(); i+=3) {    
-    //     printf("f %d %d %d\n", global_mesh->faces[i], global_mesh->faces[i+1], global_mesh->faces[i+2]);
-    // }
 };
 
 
@@ -92,8 +76,7 @@ static const char* fragment_shader_text =
 "void main()\n"
 "{\n"
 "    vec4 diffuse_color = texture(DiffuseMap, uv);\n"
-"    float intensity = clamp(dot(normal, lightPos), 0.3, 1.0); \n"
-"    fragment = diffuse_color * intensity; \n"
+"    fragment = diffuse_color; \n"
 "}\n";
 
 
